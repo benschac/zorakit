@@ -6,7 +6,6 @@ import {
   connectorsForWallets,
   darkTheme,
   DisclaimerComponent,
-  getDefaultWallets,
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
@@ -55,11 +54,6 @@ const { chains, provider, webSocketProvider } = configureChains(
   [alchemyProvider({ alchemyId }), publicProvider()]
 );
 
-const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit demo',
-  chains,
-});
-
 const demoAppInfo = {
   appName: 'Rainbowkit Demo',
 };
@@ -93,16 +87,9 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
 };
 
 const connectors = connectorsForWallets([
-  ...wallets,
   {
     groupName: 'Other',
-    wallets: [
-      wallet.argent({ chains }),
-      wallet.trust({ chains }),
-      wallet.steak({ chains }),
-      wallet.imToken({ chains }),
-      wallet.ledger({ chains }),
-    ],
+    wallets: [wallet.rainbow({ chains })],
   },
 ]);
 
