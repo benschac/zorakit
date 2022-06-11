@@ -1,6 +1,6 @@
 {
-  "name": "@rainbow-me/create-rainbowkit",
-  "description": "Scaffold a new RainbowKit project",
+  "name": "create-zorakit",
+  "description": "Scaffold a new ZoraKit project",
   "version": "0.0.4",
   "files": [
     "dist",
@@ -9,7 +9,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "create-rainbowkit": "dist/cli.js"
+    "create-zorakit": "dist/cli.js"
   },
   "scripts": {
     "build": "node build.js",
