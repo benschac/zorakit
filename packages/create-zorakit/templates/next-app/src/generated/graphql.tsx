@@ -2,9 +2,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -48,31 +54,26 @@ export type AggregateStat = {
   salesVolume: SalesVolume;
 };
 
-
 export type AggregateStatFloorPriceArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
   where: CollectionAddressAndAttributesInput;
 };
-
 
 export type AggregateStatNftCountArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
   where: CollectionAddressOwnerAddressAttributesInput;
 };
 
-
 export type AggregateStatOwnerCountArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
   where: CollectionAddressAndAttributesInput;
 };
-
 
 export type AggregateStatOwnersByCountArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
   pagination?: InputMaybe<PaginationInput>;
   where: CollectionAddressAndAttributesInput;
 };
-
 
 export type AggregateStatSalesVolumeArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
@@ -92,7 +93,7 @@ export type ApprovalEvent = {
 
 export enum ApprovalEventType {
   Approval = 'APPROVAL',
-  ApprovalForAll = 'APPROVAL_FOR_ALL'
+  ApprovalForAll = 'APPROVAL_FOR_ALL',
 }
 
 export type AttributeFilter = {
@@ -107,7 +108,7 @@ export type AudioEncodingTypes = {
 };
 
 export enum Chain {
-  Mainnet = 'MAINNET'
+  Mainnet = 'MAINNET',
 }
 
 export type Collection = {
@@ -154,7 +155,7 @@ export type CollectionConnection = {
 export enum CollectionSortKey {
   Created = 'CREATED',
   Name = 'NAME',
-  None = 'NONE'
+  None = 'NONE',
 }
 
 export type CollectionSortKeySortInput = {
@@ -196,10 +197,17 @@ export type EventConnection = {
   pageInfo: PageInfo;
 };
 
-export type EventProperties = ApprovalEvent | MintEvent | Sale | TransferEvent | V1MarketEvent | V2AuctionEvent | V3AskEvent;
+export type EventProperties =
+  | ApprovalEvent
+  | MintEvent
+  | Sale
+  | TransferEvent
+  | V1MarketEvent
+  | V2AuctionEvent
+  | V3AskEvent;
 
 export enum EventSortKey {
-  Created = 'CREATED'
+  Created = 'CREATED',
 }
 
 export type EventSortKeySortInput = {
@@ -214,7 +222,7 @@ export enum EventType {
   TransferEvent = 'TRANSFER_EVENT',
   V1MarketEvent = 'V1_MARKET_EVENT',
   V2AuctionEvent = 'V2_AUCTION_EVENT',
-  V3AskEvent = 'V3_ASK_EVENT'
+  V3AskEvent = 'V3_ASK_EVENT',
 }
 
 export type EventsQueryFilter = {
@@ -239,7 +247,12 @@ export type ImageEncodingTypes = {
   thumbnail?: Maybe<Scalars['String']>;
 };
 
-export type ImageEncodingTypesVideoEncodingTypesAudioEncodingTypesUnsupportedEncodingTypes = AudioEncodingTypes | ImageEncodingTypes | UnsupportedEncodingTypes | VideoEncodingTypes;
+export type ImageEncodingTypesVideoEncodingTypesAudioEncodingTypesUnsupportedEncodingTypes =
+
+    | AudioEncodingTypes
+    | ImageEncodingTypes
+    | UnsupportedEncodingTypes
+    | VideoEncodingTypes;
 
 export type Market = {
   __typename?: 'Market';
@@ -257,7 +270,7 @@ export type Market = {
 export enum MarketCategory {
   Ask = 'ASK',
   Auction = 'AUCTION',
-  Offer = 'OFFER'
+  Offer = 'OFFER',
 }
 
 export type MarketProperties = V1Ask | V1BidShare | V1Offer | V2Auction | V3Ask;
@@ -267,7 +280,7 @@ export enum MarketSortKey {
   Created = 'CREATED',
   NativePrice = 'NATIVE_PRICE',
   None = 'NONE',
-  TimedSaleEnding = 'TIMED_SALE_ENDING'
+  TimedSaleEnding = 'TIMED_SALE_ENDING',
 }
 
 export type MarketSortKeySortInput = {
@@ -278,7 +291,7 @@ export type MarketSortKeySortInput = {
 export enum MarketStatus {
   Active = 'ACTIVE',
   Canceled = 'CANCELED',
-  Completed = 'COMPLETED'
+  Completed = 'COMPLETED',
 }
 
 export enum MarketType {
@@ -286,7 +299,7 @@ export enum MarketType {
   V1BidShare = 'V1_BID_SHARE',
   V1Offer = 'V1_OFFER',
   V2Auction = 'V2_AUCTION',
-  V3Ask = 'V3_ASK'
+  V3Ask = 'V3_ASK',
 }
 
 export type MarketTypeFilter = {
@@ -323,7 +336,7 @@ export enum MediaType {
   Html = 'HTML',
   Image = 'IMAGE',
   Text = 'TEXT',
-  Video = 'VIDEO'
+  Video = 'VIDEO',
 }
 
 export type Mint = {
@@ -358,7 +371,7 @@ export enum MintSortKey {
   None = 'NONE',
   Price = 'PRICE',
   Time = 'TIME',
-  TokenId = 'TOKEN_ID'
+  TokenId = 'TOKEN_ID',
 }
 
 export type MintSortKeySortInput = {
@@ -372,7 +385,6 @@ export type MintWithTokenAndMarkets = {
   mint: Mint;
   token?: Maybe<Token>;
 };
-
 
 export type MintWithTokenAndMarketsMarketsArgs = {
   filter?: InputMaybe<MarketsQueryFilter>;
@@ -399,7 +411,7 @@ export type MintsQueryInput = {
 };
 
 export enum Network {
-  Ethereum = 'ETHEREUM'
+  Ethereum = 'ETHEREUM',
 }
 
 export type NetworkInfo = {
@@ -477,12 +489,10 @@ export type RootQuery = {
   tokens: TokenWithMarketsSummaryConnection;
 };
 
-
 export type RootQueryAggregateAttributesArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
   where: AggregateAttributesQueryInput;
 };
-
 
 export type RootQueryCollectionsArgs = {
   networks?: InputMaybe<Array<NetworkInput>>;
@@ -490,7 +500,6 @@ export type RootQueryCollectionsArgs = {
   sort?: InputMaybe<CollectionSortKeySortInput>;
   where?: InputMaybe<CollectionsQueryInput>;
 };
-
 
 export type RootQueryEventsArgs = {
   filter?: InputMaybe<EventsQueryFilter>;
@@ -500,7 +509,6 @@ export type RootQueryEventsArgs = {
   where?: InputMaybe<EventsQueryInput>;
 };
 
-
 export type RootQueryMarketsArgs = {
   filter?: InputMaybe<MarketsQueryFilter>;
   networks?: InputMaybe<Array<NetworkInput>>;
@@ -508,7 +516,6 @@ export type RootQueryMarketsArgs = {
   sort?: InputMaybe<MarketSortKeySortInput>;
   where?: InputMaybe<MarketsQueryInput>;
 };
-
 
 export type RootQueryMintsArgs = {
   filter?: InputMaybe<MintsQueryFilter>;
@@ -518,7 +525,6 @@ export type RootQueryMintsArgs = {
   where?: InputMaybe<MintsQueryInput>;
 };
 
-
 export type RootQuerySalesArgs = {
   filter?: InputMaybe<SalesQueryFilter>;
   networks?: InputMaybe<Array<NetworkInput>>;
@@ -527,19 +533,16 @@ export type RootQuerySalesArgs = {
   where?: InputMaybe<SalesQueryInput>;
 };
 
-
 export type RootQuerySearchArgs = {
   filter?: InputMaybe<SearchFilter>;
   pagination: SearchPaginationInput;
   query: SearchQueryInput;
 };
 
-
 export type RootQueryTokenArgs = {
   network?: InputMaybe<NetworkInput>;
   token: TokenInput;
 };
-
 
 export type RootQueryTokensArgs = {
   filter?: InputMaybe<TokensQueryFilter>;
@@ -566,7 +569,7 @@ export enum SaleSortKey {
   ChainTokenPrice = 'CHAIN_TOKEN_PRICE',
   NativePrice = 'NATIVE_PRICE',
   None = 'NONE',
-  Time = 'TIME'
+  Time = 'TIME',
 }
 
 export type SaleSortKeySortInput = {
@@ -585,7 +588,7 @@ export enum SaleType {
   SuperrareSale = 'SUPERRARE_SALE',
   ZeroxSale = 'ZEROX_SALE',
   ZoraV2AuctionSale = 'ZORA_V2_AUCTION_SALE',
-  ZoraV3AskSale = 'ZORA_V3_ASK_SALE'
+  ZoraV3AskSale = 'ZORA_V3_ASK_SALE',
 }
 
 export type SaleWithToken = {
@@ -653,12 +656,12 @@ export type SearchResultConnection = {
 
 export enum SearchableEntity {
   Collection = 'COLLECTION',
-  Token = 'TOKEN'
+  Token = 'TOKEN',
 }
 
 export enum SortDirection {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export type TimeFilter = {
@@ -733,7 +736,7 @@ export enum TokenSortKey {
   None = 'NONE',
   TimedSaleEnding = 'TIMED_SALE_ENDING',
   TokenId = 'TOKEN_ID',
-  Transferred = 'TRANSFERRED'
+  Transferred = 'TRANSFERRED',
 }
 
 export type TokenWithFullMarketHistory = {
@@ -744,20 +747,17 @@ export type TokenWithFullMarketHistory = {
   token: Token;
 };
 
-
 export type TokenWithFullMarketHistoryEventsArgs = {
   filter?: InputMaybe<EventsQueryFilter>;
   pagination?: InputMaybe<PaginationInput>;
   sort?: InputMaybe<EventSortKeySortInput>;
 };
 
-
 export type TokenWithFullMarketHistoryMarketsArgs = {
   filter?: InputMaybe<MarketsQueryFilter>;
   pagination?: InputMaybe<PaginationInput>;
   sort?: InputMaybe<MarketSortKeySortInput>;
 };
-
 
 export type TokenWithFullMarketHistorySalesArgs = {
   filter?: InputMaybe<SalesQueryFilter>;
@@ -773,13 +773,11 @@ export type TokenWithMarketsSummary = {
   token: Token;
 };
 
-
 export type TokenWithMarketsSummaryEventsArgs = {
   filter?: InputMaybe<EventsQueryFilter>;
   pagination?: InputMaybe<PaginationInput>;
   sort?: InputMaybe<EventSortKeySortInput>;
 };
-
 
 export type TokenWithMarketsSummarySalesArgs = {
   filter?: InputMaybe<SalesQueryFilter>;
@@ -870,7 +868,7 @@ export type V1MarketBidShareUpdatedEventProperties = {
 export enum V1MarketEntityStatus {
   Active = 'ACTIVE',
   Canceled = 'CANCELED',
-  Completed = 'COMPLETED'
+  Completed = 'COMPLETED',
 }
 
 export type V1MarketEvent = {
@@ -882,7 +880,13 @@ export type V1MarketEvent = {
   v1MarketEventType: V1MarketEventType;
 };
 
-export type V1MarketEventProperties = V1MarketAskCreatedEventProperties | V1MarketAskRemovedEventProperties | V1MarketBidShareUpdatedEventProperties | V1MarketOfferCreatedEventProperties | V1MarketOfferFinalizedEventProperties | V1MarketOfferRemovedEventProperties;
+export type V1MarketEventProperties =
+  | V1MarketAskCreatedEventProperties
+  | V1MarketAskRemovedEventProperties
+  | V1MarketBidShareUpdatedEventProperties
+  | V1MarketOfferCreatedEventProperties
+  | V1MarketOfferFinalizedEventProperties
+  | V1MarketOfferRemovedEventProperties;
 
 export enum V1MarketEventType {
   V1MarketAskCreated = 'V1_MARKET_ASK_CREATED',
@@ -890,7 +894,7 @@ export enum V1MarketEventType {
   V1MarketBidCreated = 'V1_MARKET_BID_CREATED',
   V1MarketBidFinalized = 'V1_MARKET_BID_FINALIZED',
   V1MarketBidRemoved = 'V1_MARKET_BID_REMOVED',
-  V1MarketBidShareUpdated = 'V1_MARKET_BID_SHARE_UPDATED'
+  V1MarketBidShareUpdated = 'V1_MARKET_BID_SHARE_UPDATED',
 }
 
 export type V1MarketOfferCreatedEventProperties = {
@@ -1012,7 +1016,14 @@ export type V2AuctionEvent = {
   v2AuctionEventType: V2AuctionEventType;
 };
 
-export type V2AuctionEventProperties = V2AuctionApprovalUpdatedEventProperties | V2AuctionBidEventProperties | V2AuctionCanceledEventProperties | V2AuctionCreatedEventProperties | V2AuctionDurationExtendedEventProperties | V2AuctionEndedEventProperties | V2AuctionReservePriceUpdatedEventProperties;
+export type V2AuctionEventProperties =
+  | V2AuctionApprovalUpdatedEventProperties
+  | V2AuctionBidEventProperties
+  | V2AuctionCanceledEventProperties
+  | V2AuctionCreatedEventProperties
+  | V2AuctionDurationExtendedEventProperties
+  | V2AuctionEndedEventProperties
+  | V2AuctionReservePriceUpdatedEventProperties;
 
 export enum V2AuctionEventType {
   V2AuctionApprovalUpdated = 'V2_AUCTION_APPROVAL_UPDATED',
@@ -1021,7 +1032,7 @@ export enum V2AuctionEventType {
   V2AuctionCreated = 'V2_AUCTION_CREATED',
   V2AuctionDurationExtended = 'V2_AUCTION_DURATION_EXTENDED',
   V2AuctionEnded = 'V2_AUCTION_ENDED',
-  V2AuctionReservePriceUpdated = 'V2_AUCTION_RESERVE_PRICE_UPDATED'
+  V2AuctionReservePriceUpdated = 'V2_AUCTION_RESERVE_PRICE_UPDATED',
 }
 
 export type V2AuctionReservePriceUpdatedEventProperties = {
@@ -1034,7 +1045,7 @@ export enum V2AuctionStatus {
   Active = 'ACTIVE',
   Canceled = 'CANCELED',
   Completed = 'COMPLETED',
-  Expired = 'EXPIRED'
+  Expired = 'EXPIRED',
 }
 
 export type V3Ask = {
@@ -1081,13 +1092,17 @@ export type V3AskEvent = {
   v3AskEventType: V3AskEventType;
 };
 
-export type V3AskEventProperties = V3AskCanceledEventProperties | V3AskCreatedEventProperties | V3AskFilledEventProperties | V3AskPriceUpdatedEventProperties;
+export type V3AskEventProperties =
+  | V3AskCanceledEventProperties
+  | V3AskCreatedEventProperties
+  | V3AskFilledEventProperties
+  | V3AskPriceUpdatedEventProperties;
 
 export enum V3AskEventType {
   V3AskCanceled = 'V3_ASK_CANCELED',
   V3AskCreated = 'V3_ASK_CREATED',
   V3AskFilled = 'V3_ASK_FILLED',
-  V3AskPriceUpdated = 'V3_ASK_PRICE_UPDATED'
+  V3AskPriceUpdated = 'V3_ASK_PRICE_UPDATED',
 }
 
 export type V3AskFilledEventProperties = {
@@ -1115,7 +1130,7 @@ export type V3AskPriceUpdatedEventProperties = {
 export enum V3AskStatus {
   Active = 'ACTIVE',
   Canceled = 'CANCELED',
-  Completed = 'COMPLETED'
+  Completed = 'COMPLETED',
 }
 
 export type VideoEncodingTypes = {
@@ -1134,8 +1149,41 @@ export type CollectionInfoQueryVariables = Exact<{
   where?: InputMaybe<CollectionsQueryInput>;
 }>;
 
-
-export type CollectionInfoQuery = { __typename?: 'RootQuery', collections: { __typename?: 'CollectionConnection', nodes: Array<{ __typename?: 'Collection', address: string, description: string, name?: string | null, symbol?: string | null, totalSupply?: number | null, networkInfo: { __typename?: 'NetworkInfo', network: Network, chain: Chain }, attributes?: Array<{ __typename?: 'CollectionAttribute', traitType?: string | null, valueMetrics: Array<{ __typename?: 'CollectionAttributeValue', value: string, count: number, percent: number }> }> | null }>, pageInfo: { __typename?: 'PageInfo', limit: number, endCursor?: string | null, hasNextPage: boolean } } };
+export type CollectionInfoQuery = {
+  __typename?: 'RootQuery';
+  collections: {
+    __typename?: 'CollectionConnection';
+    nodes: Array<{
+      __typename?: 'Collection';
+      address: string;
+      description: string;
+      name?: string | null;
+      symbol?: string | null;
+      totalSupply?: number | null;
+      networkInfo: {
+        __typename?: 'NetworkInfo';
+        network: Network;
+        chain: Chain;
+      };
+      attributes?: Array<{
+        __typename?: 'CollectionAttribute';
+        traitType?: string | null;
+        valueMetrics: Array<{
+          __typename?: 'CollectionAttributeValue';
+          value: string;
+          count: number;
+          percent: number;
+        }>;
+      }> | null;
+    }>;
+    pageInfo: {
+      __typename?: 'PageInfo';
+      limit: number;
+      endCursor?: string | null;
+      hasNextPage: boolean;
+    };
+  };
+};
 
 export type MeNfTsQueryVariables = Exact<{
   filter?: InputMaybe<TokensQueryFilter>;
@@ -1145,45 +1193,68 @@ export type MeNfTsQueryVariables = Exact<{
   where?: InputMaybe<TokensQueryInput>;
 }>;
 
-
-export type MeNfTsQuery = { __typename?: 'RootQuery', tokens: { __typename?: 'TokenWithMarketsSummaryConnection', nodes: Array<{ __typename?: 'TokenWithMarketsSummary', token: { __typename?: 'Token', collectionAddress: string, tokenId: string, name?: string | null, owner?: string | null, metadata?: any | null, image?: { __typename?: 'TokenContentMedia', url?: string | null } | null } }> } };
-
+export type MeNfTsQuery = {
+  __typename?: 'RootQuery';
+  tokens: {
+    __typename?: 'TokenWithMarketsSummaryConnection';
+    nodes: Array<{
+      __typename?: 'TokenWithMarketsSummary';
+      token: {
+        __typename?: 'Token';
+        collectionAddress: string;
+        tokenId: string;
+        name?: string | null;
+        owner?: string | null;
+        metadata?: any | null;
+        image?: {
+          __typename?: 'TokenContentMedia';
+          url?: string | null;
+        } | null;
+      };
+    }>;
+  };
+};
 
 export const CollectionInfoDocument = gql`
-    query CollectionInfo($networks: [NetworkInput!], $pagination: PaginationInput, $sort: CollectionSortKeySortInput, $where: CollectionsQueryInput) {
-  collections(
-    networks: $networks
-    pagination: $pagination
-    sort: $sort
-    where: $where
+  query CollectionInfo(
+    $networks: [NetworkInput!]
+    $pagination: PaginationInput
+    $sort: CollectionSortKeySortInput
+    $where: CollectionsQueryInput
   ) {
-    nodes {
-      address
-      description
-      name
-      symbol
-      totalSupply
-      networkInfo {
-        network
-        chain
-      }
-      attributes {
-        traitType
-        valueMetrics {
-          value
-          count
-          percent
+    collections(
+      networks: $networks
+      pagination: $pagination
+      sort: $sort
+      where: $where
+    ) {
+      nodes {
+        address
+        description
+        name
+        symbol
+        totalSupply
+        networkInfo {
+          network
+          chain
+        }
+        attributes {
+          traitType
+          valueMetrics {
+            value
+            count
+            percent
+          }
         }
       }
-    }
-    pageInfo {
-      limit
-      endCursor
-      hasNextPage
+      pageInfo {
+        limit
+        endCursor
+        hasNextPage
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useCollectionInfoQuery__
@@ -1204,41 +1275,70 @@ export const CollectionInfoDocument = gql`
  *   },
  * });
  */
-export function useCollectionInfoQuery(baseOptions?: Apollo.QueryHookOptions<CollectionInfoQuery, CollectionInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CollectionInfoQuery, CollectionInfoQueryVariables>(CollectionInfoDocument, options);
-      }
-export function useCollectionInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CollectionInfoQuery, CollectionInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CollectionInfoQuery, CollectionInfoQueryVariables>(CollectionInfoDocument, options);
-        }
-export type CollectionInfoQueryHookResult = ReturnType<typeof useCollectionInfoQuery>;
-export type CollectionInfoLazyQueryHookResult = ReturnType<typeof useCollectionInfoLazyQuery>;
-export type CollectionInfoQueryResult = Apollo.QueryResult<CollectionInfoQuery, CollectionInfoQueryVariables>;
+export function useCollectionInfoQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    CollectionInfoQuery,
+    CollectionInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CollectionInfoQuery, CollectionInfoQueryVariables>(
+    CollectionInfoDocument,
+    options
+  );
+}
+export function useCollectionInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CollectionInfoQuery,
+    CollectionInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CollectionInfoQuery, CollectionInfoQueryVariables>(
+    CollectionInfoDocument,
+    options
+  );
+}
+export type CollectionInfoQueryHookResult = ReturnType<
+  typeof useCollectionInfoQuery
+>;
+export type CollectionInfoLazyQueryHookResult = ReturnType<
+  typeof useCollectionInfoLazyQuery
+>;
+export type CollectionInfoQueryResult = Apollo.QueryResult<
+  CollectionInfoQuery,
+  CollectionInfoQueryVariables
+>;
 export const MeNfTsDocument = gql`
-    query MeNFTs($filter: TokensQueryFilter, $networks: [NetworkInput!], $pagination: PaginationInput, $sort: TokenSortInput, $where: TokensQueryInput) {
-  tokens(
-    filter: $filter
-    networks: $networks
-    pagination: $pagination
-    sort: $sort
-    where: $where
+  query MeNFTs(
+    $filter: TokensQueryFilter
+    $networks: [NetworkInput!]
+    $pagination: PaginationInput
+    $sort: TokenSortInput
+    $where: TokensQueryInput
   ) {
-    nodes {
-      token {
-        collectionAddress
-        tokenId
-        name
-        owner
-        image {
-          url
+    tokens(
+      filter: $filter
+      networks: $networks
+      pagination: $pagination
+      sort: $sort
+      where: $where
+    ) {
+      nodes {
+        token {
+          collectionAddress
+          tokenId
+          name
+          owner
+          image {
+            url
+          }
+          metadata
         }
-        metadata
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useMeNfTsQuery__
@@ -1260,75 +1360,79 @@ export const MeNfTsDocument = gql`
  *   },
  * });
  */
-export function useMeNfTsQuery(baseOptions?: Apollo.QueryHookOptions<MeNfTsQuery, MeNfTsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<MeNfTsQuery, MeNfTsQueryVariables>(MeNfTsDocument, options);
-      }
-export function useMeNfTsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeNfTsQuery, MeNfTsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<MeNfTsQuery, MeNfTsQueryVariables>(MeNfTsDocument, options);
-        }
+export function useMeNfTsQuery(
+  baseOptions?: Apollo.QueryHookOptions<MeNfTsQuery, MeNfTsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<MeNfTsQuery, MeNfTsQueryVariables>(
+    MeNfTsDocument,
+    options
+  );
+}
+export function useMeNfTsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<MeNfTsQuery, MeNfTsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<MeNfTsQuery, MeNfTsQueryVariables>(
+    MeNfTsDocument,
+    options
+  );
+}
 export type MeNfTsQueryHookResult = ReturnType<typeof useMeNfTsQuery>;
 export type MeNfTsLazyQueryHookResult = ReturnType<typeof useMeNfTsLazyQuery>;
-export type MeNfTsQueryResult = Apollo.QueryResult<MeNfTsQuery, MeNfTsQueryVariables>;
+export type MeNfTsQueryResult = Apollo.QueryResult<
+  MeNfTsQuery,
+  MeNfTsQueryVariables
+>;
 
-      export interface PossibleTypesResultData {
-        possibleTypes: {
-          [key: string]: string[]
-        }
-      }
-      const result: PossibleTypesResultData = {
-  "possibleTypes": {
-    "EventProperties": [
-      "ApprovalEvent",
-      "MintEvent",
-      "Sale",
-      "TransferEvent",
-      "V1MarketEvent",
-      "V2AuctionEvent",
-      "V3AskEvent"
+export interface PossibleTypesResultData {
+  possibleTypes: {
+    [key: string]: string[];
+  };
+}
+const result: PossibleTypesResultData = {
+  possibleTypes: {
+    EventProperties: [
+      'ApprovalEvent',
+      'MintEvent',
+      'Sale',
+      'TransferEvent',
+      'V1MarketEvent',
+      'V2AuctionEvent',
+      'V3AskEvent',
     ],
-    "ImageEncodingTypesVideoEncodingTypesAudioEncodingTypesUnsupportedEncodingTypes": [
-      "AudioEncodingTypes",
-      "ImageEncodingTypes",
-      "UnsupportedEncodingTypes",
-      "VideoEncodingTypes"
+    ImageEncodingTypesVideoEncodingTypesAudioEncodingTypesUnsupportedEncodingTypes:
+      [
+        'AudioEncodingTypes',
+        'ImageEncodingTypes',
+        'UnsupportedEncodingTypes',
+        'VideoEncodingTypes',
+      ],
+    MarketProperties: ['V1Ask', 'V1BidShare', 'V1Offer', 'V2Auction', 'V3Ask'],
+    TokenCollection: ['Collection', 'Token'],
+    V1MarketEventProperties: [
+      'V1MarketAskCreatedEventProperties',
+      'V1MarketAskRemovedEventProperties',
+      'V1MarketBidShareUpdatedEventProperties',
+      'V1MarketOfferCreatedEventProperties',
+      'V1MarketOfferFinalizedEventProperties',
+      'V1MarketOfferRemovedEventProperties',
     ],
-    "MarketProperties": [
-      "V1Ask",
-      "V1BidShare",
-      "V1Offer",
-      "V2Auction",
-      "V3Ask"
+    V2AuctionEventProperties: [
+      'V2AuctionApprovalUpdatedEventProperties',
+      'V2AuctionBidEventProperties',
+      'V2AuctionCanceledEventProperties',
+      'V2AuctionCreatedEventProperties',
+      'V2AuctionDurationExtendedEventProperties',
+      'V2AuctionEndedEventProperties',
+      'V2AuctionReservePriceUpdatedEventProperties',
     ],
-    "TokenCollection": [
-      "Collection",
-      "Token"
+    V3AskEventProperties: [
+      'V3AskCanceledEventProperties',
+      'V3AskCreatedEventProperties',
+      'V3AskFilledEventProperties',
+      'V3AskPriceUpdatedEventProperties',
     ],
-    "V1MarketEventProperties": [
-      "V1MarketAskCreatedEventProperties",
-      "V1MarketAskRemovedEventProperties",
-      "V1MarketBidShareUpdatedEventProperties",
-      "V1MarketOfferCreatedEventProperties",
-      "V1MarketOfferFinalizedEventProperties",
-      "V1MarketOfferRemovedEventProperties"
-    ],
-    "V2AuctionEventProperties": [
-      "V2AuctionApprovalUpdatedEventProperties",
-      "V2AuctionBidEventProperties",
-      "V2AuctionCanceledEventProperties",
-      "V2AuctionCreatedEventProperties",
-      "V2AuctionDurationExtendedEventProperties",
-      "V2AuctionEndedEventProperties",
-      "V2AuctionReservePriceUpdatedEventProperties"
-    ],
-    "V3AskEventProperties": [
-      "V3AskCanceledEventProperties",
-      "V3AskCreatedEventProperties",
-      "V3AskFilledEventProperties",
-      "V3AskPriceUpdatedEventProperties"
-    ]
-  }
+  },
 };
-      export default result;
-    
+export default result;

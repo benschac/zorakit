@@ -1,14 +1,14 @@
-import "../styles/globals.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import type { AppProps } from "next/app";
-import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
-import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import '../styles/globals.css';
+import '@rainbow-me/rainbowkit/styles.css';
+import type { AppProps } from 'next/app';
+import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: "https://api.zora.co/graphql",
+  uri: 'https://api.zora.co/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -18,7 +18,7 @@ const { chains, provider, webSocketProvider } = configureChains(
     chain.polygon,
     chain.optimism,
     chain.arbitrum,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
@@ -33,7 +33,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "RainbowKit App",
+  appName: 'RainbowKit App',
   chains,
 });
 
