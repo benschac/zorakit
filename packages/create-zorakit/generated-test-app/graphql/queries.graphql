@@ -1,0 +1,67 @@
+query CollectionInfo(
+  $networks: [NetworkInput!]
+  $pagination: PaginationInput
+  $sort: CollectionSortKeySortInput
+  $where: CollectionsQueryInput
+) {
+  collections(
+    networks: $networks
+    pagination: $pagination
+    sort: $sort
+    where: $where
+  ) {
+    nodes {
+      address
+      description
+      name
+      symbol
+      totalSupply
+      networkInfo {
+        network
+        chain
+      }
+      attributes {
+        traitType
+        valueMetrics {
+          value
+          count
+          percent
+        }
+      }
+    }
+    pageInfo {
+      limit
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+query MeNFTs(
+  $filter: TokensQueryFilter
+  $networks: [NetworkInput!]
+  $pagination: PaginationInput
+  $sort: TokenSortInput
+  $where: TokensQueryInput
+) {
+  tokens(
+    filter: $filter
+    networks: $networks
+    pagination: $pagination
+    sort: $sort
+    where: $where
+  ) {
+    nodes {
+      token {
+        collectionAddress
+        tokenId
+        name
+        owner
+        image {
+          url
+        }
+        metadata
+      }
+    }
+  }
+}

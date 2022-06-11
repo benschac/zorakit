@@ -1,7 +1,7 @@
 {
   "name": "create-zorakit",
   "description": "Scaffold a new ZoraKit project",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "files": [
     "dist",
     "templates"
