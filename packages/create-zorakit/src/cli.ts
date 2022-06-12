@@ -57,7 +57,7 @@ async function run() {
     ];
 
     log();
-    log(chalk.green(`🌈 Welcome to RainbowKit!`));
+    log(chalk.green(`Welcome to ZoraKit!`));
 
     const isValidProjectName = (value: string) =>
       validateNpmPackageName(value).validForNewPackages;
@@ -72,7 +72,7 @@ async function run() {
     if (!projectPath) {
       log();
       const { value } = await prompts({
-        initial: 'my-rainbowkit-app',
+        initial: 'my-zorakit-app',
         message: 'What is the name of your project?',
         name: 'value',
         type: 'text',
@@ -140,9 +140,7 @@ async function run() {
     const selectedTemplatePath = path.join(templatesPath, templateName);
 
     log(
-      chalk.cyan(
-        `🚀 Creating a new RainbowKit app in ${chalk.bold(targetPath)}`
-      )
+      chalk.cyan(`🚀 Creating a new ZoraKit app in ${chalk.bold(targetPath)}`)
     );
 
     const ignoreList: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
@@ -222,7 +220,7 @@ async function run() {
       );
     }
 
-    log(chalk.green(`🌈 Done! Thanks for using RainbowKit 🙏`));
+    log(chalk.green(`Done! Thanks for using ZoraKit 🙏`));
     log();
     log(
       chalk.cyan(
